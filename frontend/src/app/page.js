@@ -50,12 +50,10 @@ export default function Home() {
     return errors;
   };
 
-  // Handle form input
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Handle dataset upload
   const handleDataset = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -78,7 +76,6 @@ export default function Home() {
     }
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -129,7 +126,6 @@ export default function Home() {
       });
   };
 
-  // Fetch AI insight
   const fetchInsight = () => {
     setInsightLoading(true);
     setInsight(null);
@@ -152,21 +148,20 @@ export default function Home() {
       });
   };
 
-  // Fetch insight when metrics or competitor changes
+
   useEffect(() => {
     if (metrics && competitors.length > 0) {
       fetchInsight();
     }
-    // eslint-disable-next-line
+
   }, [metrics, selectedCompetitorIdx]);
 
-  // Handle competitor selection
+
   const handleCompetitorChange = (e) => {
     setSelectedCompetitorIdx(Number(e.target.value));
     setSimResult(null);
   };
 
-  // Handle simulation
   const handleSimulate = (e) => {
     e.preventDefault();
     setSimLoading(true);
@@ -195,7 +190,7 @@ export default function Home() {
       });
   };
 
-  // Show form if not submitted
+
   if (!submitted) {
   return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
